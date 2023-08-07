@@ -57,4 +57,5 @@ ENV APP_PORT=50051
 ENV GOTRACEBACK=single
 
 EXPOSE 50051
-ENTRYPOINT ["/src/shippingservice"]
+#ENTRYPOINT ["/src/shippingservice"]
+ENTRYPOINT ["/go/bin/shippingservice"]
