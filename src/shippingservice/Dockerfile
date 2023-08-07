@@ -36,7 +36,7 @@ RUN echo "[Pipeline] Initializing agent and Generating a session ID"
 RUN ./slcli config init --lang go --token ./sltoken.txt
 RUN ./slcli config create-bsid --app shippingservice --branch main --build 3
 RUN echo "[Sealights] Scan and Instrument code ..."
-RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init false
+RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
 
 # Skaffold passes in debug-oriented compiler flags
 ARG SKAFFOLD_GO_GCFLAGS
@@ -55,6 +55,8 @@ ENV APP_PORT=50051
 # Default behavior - a failure prints a stack trace for the current goroutine.
 # See https://golang.org/pkg/runtime/
 ENV GOTRACEBACK=single
+
+ENV SEALIGHTS_DISABLE_ON_INIT=false
 
 EXPOSE 50051
 ENTRYPOINT ["/src/shippingservice"]
