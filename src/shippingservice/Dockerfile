@@ -12,17 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG APP_NAME
-ARG BRANCH_NAME
-ARG BUILD_NAME
-ARG SEALIGHTS_TOKEN
-ARG SEALIGHTS_DISABLE
+ARG APP_NAME="changeme"
+ARG BRANCH_NAME="changeme"
+ARG BUILD_NAME="changeme"
+ARG SEALIGHTS_TOKEN="changeme"
+ARG SEALIGHTS_DISABLE="true"
 
 FROM golang:1.17.7-alpine as builder
 RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 WORKDIR /src
-
+RUN echo $SEALIGHTS_TOKEN
+RUN echo $SEALIGHTS_TOKEN >> ./sltoken.txt
 # restore dependencies
 COPY go.mod go.sum ./
 RUN go mod download
@@ -30,8 +31,6 @@ COPY . .
 
 # Get Sealights Agent
 RUN echo "[Sealights] Downloading Sealights Golang & CLI Agents..."
-RUN echo $SEALIGHTS_TOKEN
-RUN echo $SEALIGHTS_TOKEN >> ./sltoken.txt
 #COPY sltoken.txt ./
 RUN wget -nv -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
 RUN wget -nv -O sealights-slcli.tar.gz https://agents.sealights.co/slcli/latest/slcli-linux-amd64.tar.gz
