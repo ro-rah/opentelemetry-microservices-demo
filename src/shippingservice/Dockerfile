@@ -36,7 +36,7 @@ RUN echo "[Pipeline] Initializing agent and Generating a session ID"
 RUN ./slcli config init --lang go --token ./sltoken.txt
 RUN ./slcli config create-bsid --app shippingservice --branch main --build 1
 RUN echo "[Sealights] Scan and Instrument code ..."
-RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath src/shippingservice --scm git --scmVersion "0" --scmProvider github --disable-on-init false
+RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init false
 
 # Skaffold passes in debug-oriented compiler flags
 ARG SKAFFOLD_GO_GCFLAGS
