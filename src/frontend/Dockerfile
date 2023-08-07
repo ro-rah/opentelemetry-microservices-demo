@@ -18,6 +18,7 @@ ARG BRANCH_NAME="changeme"
 ARG BUILD_NAME="changeme"
 ARG SEALIGHTS_TOKEN="changeme"
 ARG SEALIGHTS_DISABLE="true"
+RUN echo $SEALIGHTS_TOKEN >> ./sltoken.txt
 RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 WORKDIR /src
@@ -29,7 +30,6 @@ COPY . .
 
 # Get Sealights Agent
 RUN echo "[Sealights] Downloading Sealights Golang & CLI Agents..."
-#COPY sltoken.txt ./
 RUN wget -nv -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
 RUN wget -nv -O sealights-slcli.tar.gz https://agents.sealights.co/slcli/latest/slcli-linux-amd64.tar.gz
 RUN tar -xzf ./sealights-go-agent.tar.gz && tar -xzf ./sealights-slcli.tar.gz 
