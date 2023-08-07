@@ -50,7 +50,7 @@ while IFS= read -d $'\0' -r dir; do
         cd "${builddir}"
         log "Building: ${image}"
         log "token value : ${SEALIGHTS_TOKEN}"
-        docker build --build-arg APP_NAME=$svcname --build-arg BRANCH_NAME=${BRANCH} --build-arg BUILD_NAME=${BUILD_NUMBER} --build-arg SEALIGHTS_TOKEN="${SEALIGHTS_TOKEN}" -t "${image}" .
+        docker build --build-arg APP_NAME="$svcname" --build-arg BRANCH_NAME="${BRANCH}" --build-arg BUILD_NAME="${BUILD_NUMBER}" --build-arg SEALIGHTS_TOKEN="${SEALIGHTS_TOKEN}" -t "${image}" .
     )
 done < <(find "${SCRIPTDIR}/../src" -mindepth 1 -maxdepth 1 -type d -print0)
 
