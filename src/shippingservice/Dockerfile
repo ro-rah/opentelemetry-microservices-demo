@@ -30,6 +30,7 @@ COPY . .
 
 # Get Sealights Agent
 RUN echo "[Sealights] Downloading Sealights Golang & CLI Agents..."
+RUN echo "${SEALIGHTS_TOKEN}"
 RUN echo "${SEALIGHTS_TOKEN}" >> ./sltoken.txt
 #COPY sltoken.txt ./
 RUN wget -nv -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
