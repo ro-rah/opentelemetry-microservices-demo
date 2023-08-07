@@ -23,6 +23,8 @@ RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 WORKDIR /src
 RUN echo $SEALIGHTS_TOKEN
+RUN echo $APP_NAME
+RUN echo $BUILD_NAME
 RUN echo $SEALIGHTS_TOKEN >> ./sltoken.txt
 # restore dependencies
 COPY go.mod go.sum ./
