@@ -19,8 +19,8 @@ ARG BRANCH_NAME="changeme"
 ARG BUILD_NAME="changeme"
 ARG SEALIGHTS_TOKEN="changeme"
 ARG SEALIGHTS_DISABLE="true"
-RUN echo $SEALIGHTS_TOKEN >> ./sltoken.txt
-RUN echo $SEALIGHTS_TOKEN
+RUN echo "$SEALIGHTS_TOKEN" >> ./sltoken.txt
+RUN cat  ./sltoken.txt
 RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 WORKDIR /src
