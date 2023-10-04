@@ -43,7 +43,4 @@ while IFS= read -d $'\0' -r dir; do
          pwd
          ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
 
-
-log "Successfully scanned all shipping svc."
-
-
+log "Successfully built all images."
