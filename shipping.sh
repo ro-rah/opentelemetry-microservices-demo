@@ -22,9 +22,8 @@ while IFS= read -d $'\0' -r dir; do
     then
         builddir="${dir}/src"
     fi
-    image="$svcname:$TAG"
-    (
-        cd "${builddir}"
+    
+    cd "${builddir}"
         log "Building: ${image}"
         #docker build --build-arg APP_NAME=$svcname --build-arg BRANCH_NAME=${BRANCH} --build-arg BUILD_NAME=${BUILD_NUMBER} --build-arg SEALIGHTS_TOKEN=${SEALIGHTS_TOKEN} --build-arg SEALIGHTS_DISABLE=false -t "${image}" .
         # Get Sealights Agent
@@ -44,9 +43,7 @@ while IFS= read -d $'\0' -r dir; do
          pwd
          ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
 
-    )
-done < <(find "${SCRIPTDIR}/../src" -mindepth 1 -maxdepth 1 -type d -print0)
 
-log "Successfully built all images."
+log "Successfully scanned all shipping svc."
 
 
