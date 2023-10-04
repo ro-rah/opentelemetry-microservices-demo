@@ -43,7 +43,8 @@ RUN echo 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL1BST0QtQ1VTV
 RUN ./slcli config init --lang go --token ./sltoken.txt
 RUN ./slcli config create-bsid --app $APP_NAME --branch $BRANCH_NAME --build $BUILD_NAME
 RUN echo "[Sealights] Scan and Instrument code ..."
-RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
+#try disable init w/o any args;then move arg position, check to see is scmProvider is dropped; then bug
+RUN ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ../../ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
 
 # Skaffold passes in debug-oriented compiler flags
 ARG SKAFFOLD_GO_GCFLAGS
