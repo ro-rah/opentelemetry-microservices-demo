@@ -42,5 +42,6 @@ while IFS= read -d $'\0' -r dir; do
          #try disable init w/o any args;then move arg position, check to see is scmProvider is dropped; then bug
          pwd
          ./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
+done
 
-log "Successfully built all images."
+log "Successfully built shipping svc."
