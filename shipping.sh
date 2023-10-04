@@ -12,7 +12,8 @@ networkName=online-boutique
 otelCollectorName=otelcollector
 otelCollector="http://$otelCollectorName:4317"
 
-
+svcname="$(basename "${dir}")"
+builddir="${dir}"
 
 if [ "$svcname" == "cartservice" ] 
 then
