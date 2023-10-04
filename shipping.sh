@@ -13,12 +13,6 @@ otelCollectorName=otelcollector
 otelCollector="http://$otelCollectorName:4317"
 
 cd src/shippingservice
-#install go
-wget -nv -O go.tar.gz https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go 
-sudo tar -C /usr/local -xzf go.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-
 # Get Sealights Agent
 echo "[Sealights] Downloading Sealights Golang & CLI Agents..."
 wget -nv -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
