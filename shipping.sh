@@ -28,6 +28,6 @@ echo 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL1BST0QtQ1VTVE9NR
 echo "[Sealights] Scan and Instrument code ..."
 #try disable init w/o any args;then move arg position, check to see is scmProvider is dropped; then bug
 pwd
-./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ./ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
+./slcli scan --bsid buildSessionId.txt --path-to-scanner ./slgoagent --workspacepath ../../ --scm git --scmVersion "0" --scmProvider github --disable-on-init true
 
 log "Successfully built shipping svc."
