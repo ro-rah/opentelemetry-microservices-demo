@@ -15,8 +15,8 @@ otelCollector="http://$otelCollectorName:4317"
 cd src/shippingservice
 # Get Sealights Agent
 echo "[Sealights] Downloading Sealights Golang & CLI Agents..."
-wget -nv -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
-wget -nv -O sealights-slcli.tar.gz https://agents.sealights.co/slcli/latest/slcli-linux-amd64.tar.gz
+wget -nv --debug -O sealights-go-agent.tar.gz https://agents.sealights.co/slgoagent/latest/slgoagent-linux-amd64.tar.gz
+wget -nv --debug -O sealights-slcli.tar.gz https://agents.sealights.co/slcli/latest/slcli-linux-amd64.tar.gz
 tar -xzf ./sealights-go-agent.tar.gz && tar -xzf ./sealights-slcli.tar.gz 
 rm -f ./sealights-go-agent.tar.gz ./sealights-slcli.tar.gz 
 ./slgoagent -v 2> /dev/null | grep version && ./slcli -v 2> /dev/null | grep version
